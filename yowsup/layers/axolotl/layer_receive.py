@@ -92,7 +92,7 @@ class AxolotlReceivelayer(AxolotlBaseLayer):
             logger.warning("InvalidMessage or KeyId for %s, going to send a retry", encMessageProtocolEntity.getAuthor(False))
             from yowsup.layers.axolotl.protocolentities.iq_key_get import GetKeysIqProtocolEntity
             entity = GetKeysIqProtocolEntity([encMessageProtocolEntity.getAuthor(False)])
-            logger.info("Trying GetKeys for %s getting keys now", encMessageProtocolEntity.getAuthor(False))
+            logger.warning("Trying GetKeys for %s getting keys now", encMessageProtocolEntity.getAuthor(False))
             retry = RetryOutgoingReceiptProtocolEntity.fromMessageNode(node, self.store.getLocalRegistrationId())
             self.toLower(retry.toProtocolTreeNode())
         except NoSessionException as e:
